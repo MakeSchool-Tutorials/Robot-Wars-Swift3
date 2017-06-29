@@ -41,6 +41,9 @@ Your robot will rely on callbacks to get updates on current game information. Yo
 
 You can call `moveAhead(_ distance: Int)`, `moveBack(_ distance: Int)`, `shoot()`, `turnGunLeft(_ degrees: Int)`, `turnGunRight(_ degrees: Int)`, `turnLeft(_ degrees: Int)`, and `turnRight(_ degrees: Int)` from your robot class to control your robot.
 
+> [info]
+> **None of these methods will accept negative values!** You will need to use `moveAhead` to go forward, `moveBack` to go back, `turnRight` / `turnGunRight` to go right, and `turnLeft` / `turnGunLeft` to go left.
+
 `cancelActiveAction()` should be used in callbacks to immediately stop the current action. If you do not call this, the current action will continue until it is finished. This means if you get hit at the beginning of a `moveAhead(100)` action and `cancelActiveAction()` is not called in the `gotHit` callback, the robot will continue to move until it reaches its destination. Execution of the `gotHit` callback will start once its last move is done. Starting `gotHit` with `cancelActiveAction()` will allow its execution to begin immediately.
 
 #Information Retrieval
